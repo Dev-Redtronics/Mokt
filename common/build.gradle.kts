@@ -15,7 +15,6 @@ plugins {
     `mokt-publishing`
     `mokt-multiplatform`
     `mokt-cinterop-generation`
-    `mokt-android`
     `mokt-build-constants`
 }
 
@@ -33,7 +32,7 @@ kotlin {
         useEsModules()
         binaries.library()
     }
-    
+
     val nativeDefFilePath = Path("../native-cinterop/cinterop.def")
     linuxX64 {
         applyCInteropGeneration(nativeDefFilePath)
@@ -42,7 +41,7 @@ kotlin {
     mingwX64 {
         applyCInteropGeneration(nativeDefFilePath)
     }
-    
+
     macosX64 {
         applyCInteropGeneration(nativeDefFilePath)
     }
@@ -86,9 +85,6 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(libs.kotlinx.coroutines.core)
-                api(libs.kotlinx.coroutines.debug)
-
                 api(libs.ktor.serialization.json)
                 api(libs.ktor.client.core)
                 api(libs.ktor.client.logging)
@@ -99,95 +95,69 @@ kotlin {
                 api(libs.kotlinx.datetime)
             }
         }
-
-        commonTest {
-            dependencies {
-                implementation(libs.kotest.assertions.core)
-                implementation(libs.kotest.framework.engine)
-                implementation(libs.kotest.property)
-            }
-        }
-
-        jvmMain {
-            dependencies {
-                api(libs.kotlinx.coroutines.reactive)
-                api(libs.ktor.client.cio)
-
-                api(libs.slf4j.api)
-                api(libs.logback.classic)
-            }
-        }
-
-        jvmTest {
-            dependencies {
-                implementation(libs.kotest.runner.junit5)
-            }
-        }
-
-        jsMain {
-            dependencies {
-                api(libs.kotlinx.coroutines.core.js)
-                api(libs.ktor.client.js)
-                implementation(npm("open", "10.1.0"))
-            }
-        }
-
-        linuxMain {
-            dependencies {
-                api(libs.ktor.client.cio)
-            }
-        }
-
-        mingwMain {
-            dependencies {
-                api(libs.ktor.client.winhttp)
-            }
-        }
-
-        androidMain {
-            dependencies {
-                api(libs.kotlinx.coroutines.android)
-                api(libs.ktor.client.android)
-                implementation(libs.androidx.browser)
-            }
-        }
-
-        iosMain {
-            dependencies {
-                api(libs.ktor.client.darwin)
-            }
-        }
-
-        macosMain {
-            dependencies {
-                api(libs.ktor.client.darwin)
-            }
-        }
-
-        tvosMain {
-            dependencies {
-                api(libs.ktor.client.darwin)
-            }
-        }
-
-        watchosMain {
-            dependencies {
-                api(libs.ktor.client.darwin)
-            }
-        }
-
-        all {
-            languageSettings {
-                optIn("kotlinx.cinterop.UnsafeNumber")
-                optIn("kotlinx.cinterop.ExperimentalForeignApi")
-                optIn("kotlin.experimental.ExperimentalNativeApi")
-                optIn("kotlin.native.runtime.NativeRuntimeApi")
-                optIn("kotlin.ExperimentalStdlibApi")
-            }
-        }
     }
-}
 
-android {
-    namespace = group.toString()
+//    commonTest {
+//        dependencies {
+//            implementation(libs.kotest.assertions.core)
+//            implementation(libs.kotest.framework.engine)
+//            implementation(libs.kotest.property)
+//        }
+//    }
+
+//    jvmMain {
+//        dependencies {
+//            api(libs.ktor.client.cio)
+//            api(libs.logback.classic)
+//        }
+//    }
+//
+//    jvmTest {
+//        dependencies {
+//            implementation(libs.kotest.runner.junit5)
+//        }
+//    }
+//
+//    jsMain {
+//        dependencies {
+//            api(libs.ktor.client.js)
+//            implementation(npm("open", "10.1.0"))
+//        }
+//    }
+//
+//    linuxMain {
+//        dependencies {
+//            api(libs.ktor.client.cio)
+//        }
+//    }
+//
+//    mingwMain {
+//        dependencies {
+//            api(libs.ktor.client.winhttp)
+//        }
+//    }
+//
+//    iosMain {
+//        dependencies {
+//            api(libs.ktor.client.darwin)
+//        }
+//    }
+//
+//    macosMain {
+//        dependencies {
+//            api(libs.ktor.client.darwin)
+//        }
+//    }
+//
+//    tvosMain {
+//        dependencies {
+//            api(libs.ktor.client.darwin)
+//        }
+//    }
+//
+//    watchosMain {
+//        dependencies {
+//            api(libs.ktor.client.darwin)
+//        }
+//    }
 }

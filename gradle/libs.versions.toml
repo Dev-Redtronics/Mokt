@@ -1,26 +1,16 @@
 [versions]
-kotlin = "2.0.21"
-idea-ext = "1.1.9"
-dokka = "1.9.20"
-android = "8.5.2"
-coroutines = "1.9.0"
-ktor = "3.0.1"
-kotest = "6.0.0.M1"
-serialization = "1.7.3"
-android-browser = "1.8.0"
-datetime = "0.6.1"
-mordant = "3.0.1"
-slf4j = "2.0.16"
-logback = "1.5.12"
-atomicfu = "0.26.0"
+kotlin = "2.1.10"
+idea-ext = "1.1.10"
+dokka = "2.0.0"
+ktor = "3.1.0"
+kotest = "6.0.0.M2"
+serialization = "1.8.0"
+datetime = "0.6.2"
+mordant = "3.0.2"
+logback = "1.5.16"
+atomicfu = "0.27.0"
 
 [libraries]
-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-coroutines-debug = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-debug", version.ref = "coroutines" }
-kotlinx-coroutines-core-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-kotlinx-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "coroutines" }
-
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 
@@ -28,7 +18,6 @@ ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
-ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-winhttp = { module = "io.ktor:ktor-client-winhttp", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
@@ -46,17 +35,14 @@ kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest"
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 mordant = { module = "com.github.ajalt.mordant:mordant", version.ref = "mordant" }
-androidx-browser = { module = "androidx.browser:browser", version.ref = "android-browser" }
 
 # actual plugins, but needed as dependencies in buildSrc
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 idea-ext-gradle-plugin = { module = "gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext", version.ref = "idea-ext" }
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
-android-library-gradle-plugin = { module = "com.android.library:com.android.library.gradle.plugin", version.ref = "android" }
 serialization-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotest-gradle-plugin = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
 atomicfu-gradle-plugin = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "atomicfu" }
@@ -66,7 +52,6 @@ build-src = [
     "kotlin-gradle-plugin",
     "idea-ext-gradle-plugin",
     "dokka-gradle-plugin",
-    "android-library-gradle-plugin",
     "serialization-gradle-plugin",
     "kotest-gradle-plugin",
     "atomicfu-gradle-plugin"
