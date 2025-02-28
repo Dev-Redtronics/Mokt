@@ -48,3 +48,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Mokt ###
+cinterop/cinterop.def
