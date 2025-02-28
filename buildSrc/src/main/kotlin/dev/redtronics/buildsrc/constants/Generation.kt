@@ -13,7 +13,13 @@ package dev.redtronics.buildsrc.constants
 
 import dev.redtronics.buildsrc.Task
 import org.gradle.api.Project
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.provider.MapProperty
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
+import java.io.File
 
 internal fun BuildConstantsConfiguration.buildConstantDir(project: Project) = project.layout.buildDirectory
     .dir("generated/templates")
@@ -21,34 +27,52 @@ internal fun BuildConstantsConfiguration.buildConstantDir(project: Project) = pr
     .asFile
 
 abstract class GenerateBuildConstants : Task() {
+    @get:Input
+    abstract val properties: MapProperty<String, String>
+
+    @get:InputDirectory
+    abstract val buildConstantDirectory: DirectoryProperty
+
+    @get:Input
+    abstract val projectGroup: Property<String>
+
     @TaskAction
     override fun execute() {
+        val content = extractContent()
+        val buildConstantsFile = createBuildConstantsFile()
 
-    }
-}
-
-internal fun generateBuildConstants(project: Project, buildConstantsConfiguration: BuildConstantsConfiguration) {
-    val content = buildConstantsConfiguration.properties.get().entries.joinToString("\n") {
-        "    const val ${it.key} = \"${it.value}\""
-    }
-    val generatedDir = buildConstantsConfiguration.buildConstantDir(project)
-    generatedDir.mkdirs()
-
-    val buildConstantsFile = generatedDir.resolve("BuildConstants.kt")
-    if (!buildConstantsFile.exists()) {
-        buildConstantsFile.createNewFile()
+        writeContentToBuildConstantsFile(buildConstantsFile, content)
     }
 
-    buildConstantsFile.outputStream().use { outputStream ->
-        outputStream.write(
+    private fun extractContent(): String {
+        return properties.get().entries.joinToString("\n") {
+            "    const val ${it.key} = \"${it.value}\""
+        }
+    }
+
+    private fun createBuildConstantsFile(): File {
+        val buildConstantDir = buildConstantDirectory.get().asFile
+        buildConstantDir.mkdirs()
+
+        val buildConstantsFile = buildConstantDir.resolve("BuildConstants.kt")
+        if (!buildConstantsFile.exists()) {
+            buildConstantsFile.createNewFile()
+        }
+        return buildConstantsFile
+    }
+
+    private fun writeContentToBuildConstantsFile(buildConstantsFile: File, content: String) {
+        val group = projectGroup.get()
+
+        buildConstantsFile.writeText(
             """
-// This file is generated automatically. Do not edit or modify!
-package ${project.group}.build
+                // This file is generated automatically. Do not edit or modify!
+                package ${group}.build
 
-internal object BuildConstants {
-$content
-}
-            """.trimIndent().toByteArray()
+                internal object BuildConstants {
+                $content
+                }
+            """.trimIndent()
         )
     }
 }
