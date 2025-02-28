@@ -1,4 +1,4 @@
-/*
+package dev.redtronics.buildsrc.docs/*
  * MIT License
  * Copyright 2024 Nils Jäkel & David Ernst
  *
