@@ -36,14 +36,14 @@ publishing {
                         id = "redtronics"
                         name = "Nils Jäkel"
                         timezone = "Europe/Berlin"
-                        email = "nils.jaekel@proton.me"
+                        email = "nils.jaekel@redtronics.dev"
                     }
 
                     developer {
                         id = "seri"
                         name = "David Ernst"
                         timezone = "Europe/Berlin"
-                        email = "cjd6328@gmail.com"
+                        email = "david.ernst@davils.net"
                     }
                 }
 
