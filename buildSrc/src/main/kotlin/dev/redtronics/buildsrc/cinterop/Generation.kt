@@ -11,13 +11,13 @@
 
 package dev.redtronics.buildsrc.cinterop
 
-import dev.redtronics.buildsrc.OsType
+import dev.redtronics.buildsrc.utils.OsType
 import dev.redtronics.buildsrc.Project
 import dev.redtronics.buildsrc.Task
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
-import dev.redtronics.buildsrc.os
+import dev.redtronics.buildsrc.utils.os
 import javax.inject.Inject
 import java.io.File
 
