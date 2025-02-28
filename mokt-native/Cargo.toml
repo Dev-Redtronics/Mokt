@@ -1,5 +1,5 @@
 [package]
-name = "mokt-rust-bindings"
+name = "mokt-native"
 description = "Native Rust bindings for Mokt."
 authors = ["Nils Jäkel <nils.jaekel@redtronics.dev>", "David Ernst <david.ernst@redtronics.dev>"]
 license = "MIT"
