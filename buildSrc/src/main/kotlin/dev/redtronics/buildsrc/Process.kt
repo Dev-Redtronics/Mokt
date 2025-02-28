@@ -14,17 +14,17 @@ package dev.redtronics.buildsrc
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Exec
 
-interface Process {
+internal interface Process {
     fun execute()
 }
 
-abstract class Task() : DefaultTask(), Process {
+abstract class Task : DefaultTask(), Process {
     init {
         group = Project.NAME.lowercase()
     }
 }
 
-abstract class Executable() : Exec(), Process {
+abstract class Executable : Exec(), Process {
     init {
         group = Project.NAME.lowercase()
     }
