@@ -12,10 +12,12 @@
 import dev.redtronics.buildsrc.Project
 
 plugins {
-    `mokt-publishing`
-    `mokt-multiplatform`
-    `mokt-cinterop-generation`
+    `mokt-core`
     `mokt-build-constants`
+//    `mokt-publishing`
+//    `mokt-multiplatform`
+//    `mokt-cinterop-generation`
+//    `mokt-build-constants`
 }
 
 repositories {
@@ -25,13 +27,25 @@ repositories {
 
 group = Project.GROUP
 
-kotlin {
-    js(IR) {
-        generateTypeScriptDefinitions()
-        nodejs()
-        useEsModules()
-        binaries.library()
+mokt {
+    buildConstants {
+        properties = mapOf(
+            "API_VERSION" to "1.0.0",
+        )
     }
+
+    docs {
+
+    }
+}
+
+//kotlin {
+//    js(IR) {
+//        generateTypeScriptDefinitions()
+//        nodejs()
+//        useEsModules()
+//        binaries.library()
+//    }
 
 //    val nativeDefFilePath = Path("../native-cinterop/cinterop.def")
 //    linuxX64 {
@@ -160,4 +174,4 @@ kotlin {
 //            api(libs.ktor.client.darwin)
 //        }
 //    }
-}
+//}

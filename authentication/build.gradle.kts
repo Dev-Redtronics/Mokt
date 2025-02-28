@@ -12,64 +12,68 @@
 import dev.redtronics.buildsrc.Project
 
 plugins {
-    `mokt-publishing`
-    `mokt-multiplatform`
-    `mokt-build-constants`
+    `mokt-core`
+//    `mokt-publishing`
+//    `mokt-build-constants`
 }
 
 group = Project.GROUP
 
+repositories {
+    mavenCentral()
+}
+
 kotlin {
-    linuxX64()
-
-    macosX64()
-    macosArm64()
-
-    iosArm64()
-    iosX64()
-    iosSimulatorArm64()
-
-    watchosArm32()
-    watchosArm64()
-    watchosX64()
-    watchosSimulatorArm64()
-
-    tvosArm64()
-    tvosX64()
-    tvosSimulatorArm64()
-
-    sourceSets {
-        commonMain {
-            dependencies {
-//                api(project(":common"))
-                api(libs.mordant)
-
-                implementation(libs.ktor.server.core)
-                implementation(libs.ktor.server.cio)
-                implementation(libs.ktor.server.content.negotiation)
-                implementation(libs.ktor.server.html)
-            }
-        }
-
-        commonTest {
-            dependencies {
-                implementation(libs.kotest.assertions.core)
-                implementation(libs.kotest.framework.engine)
-                implementation(libs.kotest.property)
-            }
-        }
-
-        jvmTest {
-            dependencies {
-                implementation(libs.kotest.runner.junit5)
-            }
-        }
-    }
+//    linuxX64()
+//
+//    macosX64()
+//    macosArm64()
+//
+//    iosArm64()
+//    iosX64()
+//    iosSimulatorArm64()
+//
+//    watchosArm32()
+//    watchosArm64()
+//    watchosX64()
+//    watchosSimulatorArm64()
+//
+//    tvosArm64()
+//    tvosX64()
+//    tvosSimulatorArm64()
+//
+//    sourceSets {
+//        commonMain {
+//            dependencies {
+////                api(project(":common"))
+//                api(libs.mordant)
+//
+//                implementation(libs.ktor.server.core)
+//                implementation(libs.ktor.server.cio)
+//                implementation(libs.ktor.server.content.negotiation)
+//                implementation(libs.ktor.server.html)
+//            }
+//        }
+//
+//        commonTest {
+//            dependencies {
+//                implementation(libs.kotest.assertions.core)
+//                implementation(libs.kotest.framework.engine)
+//                implementation(libs.kotest.property)
+//            }
+//        }
+//
+//        jvmTest {
+//            dependencies {
+//                implementation(libs.kotest.runner.junit5)
+//            }
+//        }
+//    }
 }
 
-buildConstants {
-    properties = mapOf(
-        "MOKT_LOGO_URL" to "https://code.redtronics.dev/nils.jaekel/mokt/-/raw/master/assets/mokt_m_alpha.png?ref_type=heads",
-        "MOKT_DEVICE_CODE_BACKGROUND" to "https://code.redtronics.dev/nils.jaekel/mokt/-/raw/master/assets/background.png?ref_type=heads"
-    )
-}
+//buildConstants {
+//    properties = mapOf(
+//        "MOKT_LOGO_URL" to "https://code.redtronics.dev/nils.jaekel/mokt/-/raw/master/assets/mokt_m_alpha.png?ref_type=heads",
+//        "MOKT_DEVICE_CODE_BACKGROUND" to "https://code.redtronics.dev/nils.jaekel/mokt/-/raw/master/assets/background.png?ref_type=heads"
+//    )
+//}
