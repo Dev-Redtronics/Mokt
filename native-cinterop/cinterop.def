@@ -1,4 +1,0 @@
-headers = mokt.h
-staticLibraries = libmokt_rust_bindings.a
-compilerOpts = -I/home/nils/Development/Redtronics/Mokt/mokt-rust-bindings/include
-libraryPaths = /home/nils/Development/Redtronics/Mokt/mokt-rust-bindings/target/release
