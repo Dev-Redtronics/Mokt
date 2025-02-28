@@ -11,6 +11,11 @@
 
 package dev.redtronics.buildsrc
 
+import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
+import dev.redtronics.buildsrc.docs.DokkaConfiguration
+import org.gradle.api.Action
+import org.gradle.api.tasks.Nested
+
 /**
  * Project settings for Mokt.
  *
@@ -23,4 +28,20 @@ object Project {
     const val GROUP = "dev.redtronics.mokt"
     const val URL = "https://mokt.redtronics.dev"
     const val GITLAB_URL = "https://code.redtronics.dev"
+}
+
+interface MoktExtension {
+    @get:Nested
+    val docs: DokkaConfiguration
+
+    @get:Nested
+    val buildConstants: BuildConstantsConfiguration
+
+    fun docs(action: Action<DokkaConfiguration>) {
+        action.execute(docs)
+    }
+
+    fun buildConstants(action: Action<BuildConstantsConfiguration>) {
+        action.execute(buildConstants)
+    }
 }
