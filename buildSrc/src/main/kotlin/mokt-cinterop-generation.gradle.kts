@@ -9,7 +9,8 @@
  * and/or sell copies of the Software.
  */
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
+import dev.redtronics.buildsrc.cinterop.CompileRust
+import dev.redtronics.buildsrc.cinterop.GenerateCompilerDefinitionFiles
 
 plugins {
     idea
@@ -17,17 +18,20 @@ plugins {
 }
 
 tasks {
-    val task = register("generateCInteropDefFiles") {
-        group = Project.NAME.lowercase()
-        description = "Generates cinterop def files for all supported operating system platforms."
+    val nativeMoktDir = rootProject.file("mokt-native")
+    val generateCompilerDefinitionFiles by register<GenerateCompilerDefinitionFiles>("generateCompilerDefinitionFiles") {
 
-        project.patchVersion()
-        project.compileRustBindings()
-        project.generateCInteropDefFiles()
+        val cinteropDir = rootProject.file("cinterop")
+        if (!cinteropDir.exists()) {
+            cinteropDir.mkdirs()
+        }
+
+        cinteropDirectory = cinteropDir
+        nativeMoktDirectory = nativeMoktDir
     }
-    onSyncExec(project, task.get(), rootProject.idea)
 
-    withType<KotlinNativeCompile> {
-        dependsOn("commonizeCInterop")
+    val compileRust by register<CompileRust>("compileRust") {
+        dependsOn(generateCompilerDefinitionFiles)
+        nativeMoktDirectory = nativeMoktDir
     }
 }
