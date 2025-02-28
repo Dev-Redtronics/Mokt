@@ -1,3 +1,9 @@
+import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
+import dev.redtronics.buildsrc.constants.buildConstantDir
+import dev.redtronics.buildsrc.constants.generateBuildConstants
+import dev.redtronics.buildsrc.generateOnCompile
+import dev.redtronics.buildsrc.onSyncExec
+
 /*
  * MIT License
  * Copyright 2024 Nils Jäkel & David Ernst

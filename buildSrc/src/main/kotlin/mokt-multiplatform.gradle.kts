@@ -9,9 +9,12 @@
  * and/or sell copies of the Software.
  */
 
+import dev.redtronics.buildsrc.docs.DokkaConfiguration
+import dev.redtronics.buildsrc.patchVersion
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.gradle.ext.IdeaExtPlugin
+import dev.redtronics.buildsrc.Project
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
