@@ -10,12 +10,8 @@
  */
 
 import dev.redtronics.buildsrc.cinterop.CompileRust
+import dev.redtronics.buildsrc.utils.executeTasksBeforeCompile
 import dev.redtronics.buildsrc.cinterop.GenerateCompilerDefinitionFiles
-
-plugins {
-    idea
-    org.jetbrains.gradle.plugin.`idea-ext`
-}
 
 tasks {
     val nativeMoktDir = rootProject.file("mokt-native")
@@ -34,4 +30,5 @@ tasks {
         dependsOn(generateCompilerDefinitionFiles)
         nativeMoktDirectory = nativeMoktDir
     }
+    project.executeTasksBeforeCompile(generateCompilerDefinitionFiles, compileRust)
 }
