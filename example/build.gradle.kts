@@ -9,6 +9,8 @@
  * and/or sell copies of the Software.
  */
 
+import dev.redtronics.buildsrc.Project
+
 plugins {
     org.jetbrains.kotlin.jvm
 }
