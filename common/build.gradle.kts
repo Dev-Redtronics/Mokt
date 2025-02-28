@@ -9,7 +9,7 @@
  * and/or sell copies of the Software.
  */
 
-import kotlin.io.path.Path
+import dev.redtronics.buildsrc.Project
 
 plugins {
     `mokt-publishing`
@@ -33,69 +33,69 @@ kotlin {
         binaries.library()
     }
 
-    val nativeDefFilePath = Path("../native-cinterop/cinterop.def")
-    linuxX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
+//    val nativeDefFilePath = Path("../native-cinterop/cinterop.def")
+//    linuxX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//
+//    mingwX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//
+//    macosX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    macosArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//
+//    iosArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    iosX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    iosSimulatorArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//
+//    watchosArm32 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    watchosArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    watchosX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    watchosSimulatorArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//
+//    tvosArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    tvosX64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
+//    tvosSimulatorArm64 {
+//        applyCInteropGeneration(nativeDefFilePath)
+//    }
 
-    mingwX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-
-    macosX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    macosArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-
-    iosArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    iosX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    iosSimulatorArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-
-    watchosArm32 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    watchosArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    watchosX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    watchosSimulatorArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-
-    tvosArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    tvosX64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-    tvosSimulatorArm64 {
-        applyCInteropGeneration(nativeDefFilePath)
-    }
-
-    sourceSets {
-        commonMain {
-            dependencies {
-                api(libs.ktor.serialization.json)
-                api(libs.ktor.client.core)
-                api(libs.ktor.client.logging)
-                api(libs.ktor.client.content.negotiation)
-
-                api(libs.kotlin.reflect)
-                api(libs.kotlinx.serialization.json)
-                api(libs.kotlinx.datetime)
-            }
-        }
-    }
+//    sourceSets {
+//        commonMain {
+//            dependencies {
+//                api(libs.ktor.serialization.json)
+//                api(libs.ktor.client.core)
+//                api(libs.ktor.client.logging)
+//                api(libs.ktor.client.content.negotiation)
+//
+//                api(libs.kotlin.reflect)
+//                api(libs.kotlinx.serialization.json)
+//                api(libs.kotlinx.datetime)
+//            }
+//        }
+//    }
 
 //    commonTest {
 //        dependencies {
