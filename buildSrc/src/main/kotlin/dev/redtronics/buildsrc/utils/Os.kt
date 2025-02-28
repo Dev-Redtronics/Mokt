@@ -9,9 +9,9 @@
  * and/or sell copies of the Software.
  */
 
-package dev.redtronics.buildsrc
+package dev.redtronics.buildsrc.utils
 
-enum class OsType(val value: String) {
+enum class OsType(val os: String) {
     WINDOWS("windows"),
     LINUX("linux"),
     MACOS("macos"),
