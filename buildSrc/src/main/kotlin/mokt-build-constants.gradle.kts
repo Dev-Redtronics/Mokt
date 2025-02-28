@@ -1,9 +1,3 @@
-import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
-import dev.redtronics.buildsrc.constants.buildConstantDir
-import dev.redtronics.buildsrc.constants.generateBuildConstants
-import dev.redtronics.buildsrc.generateOnCompile
-import dev.redtronics.buildsrc.onSyncExec
-
 /*
  * MIT License
  * Copyright 2024 Nils Jäkel & David Ernst
@@ -15,35 +9,37 @@ import dev.redtronics.buildsrc.onSyncExec
  * and/or sell copies of the Software.
  */
 
+import dev.redtronics.buildsrc.MoktExtension
+import dev.redtronics.buildsrc.constants.GenerateBuildConstants
+import dev.redtronics.buildsrc.constants.buildConstantDir
+import dev.redtronics.buildsrc.utils.executeTaskBeforeCompile
+
 plugins {
-    org.jetbrains.gradle.plugin.`idea-ext`
     org.jetbrains.kotlin.multiplatform
-    idea
 }
 
-val buildConstants = extensions.create(
-    "buildConstants",
-    BuildConstantsConfiguration::class
-)
+val moktExtension = extensions.getByType<MoktExtension>()
+val buildConstantsConfiguration = moktExtension.buildConstants
+
+tasks {
+    val generateBuildConstants by register<GenerateBuildConstants>("generateBuildConstants") {
+
+        val buildConstantsDir = buildConstantsConfiguration.buildConstantDir(project)
+        if (!buildConstantsDir.exists()) {
+            buildConstantsDir.mkdirs()
+        }
+
+        properties = buildConstantsConfiguration.properties
+        buildConstantDirectory = buildConstantsDir
+        projectGroup = project.group.toString()
+    }
+    project.executeTaskBeforeCompile(generateBuildConstants)
+}
 
 kotlin {
-    tasks {
-        val name = rootProject.name
-        val task = register("generateBuildConstants") {
-            group = name
-            description = "Generates build constants for all plugins."
-
-            doLast {
-                generateBuildConstants(project, buildConstants)
-            }
-        }
-        generateOnCompile(project, task.get())
-        onSyncExec(project, task.get(), rootProject.idea)
-    }
-
     sourceSets {
         commonMain {
-            kotlin.srcDir(buildConstants.buildConstantDir(project))
+            kotlin.srcDir(buildConstantsConfiguration.buildConstantDir(project))
         }
     }
 }
