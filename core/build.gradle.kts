@@ -9,6 +9,8 @@
  * and/or sell copies of the Software.
  */
 
+import dev.redtronics.buildsrc.Project
+
 plugins {
     `mokt-publishing`
     `mokt-multiplatform`
@@ -47,7 +49,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(project(":common"))
+//                implementation(project(":common"))
             }
         }
 
