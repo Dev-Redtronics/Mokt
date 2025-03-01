@@ -30,17 +30,51 @@ object Project {
     const val GITLAB_URL = "https://code.redtronics.dev"
 }
 
+/**
+ * The Mokt extension.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 interface MoktExtension {
+    /**
+     * The configuration for the Dokka plugin.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:Nested
     val docs: DokkaConfiguration
 
+    /**
+     * The configuration for the build constants.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:Nested
     val buildConstants: BuildConstantsConfiguration
 
+    /**
+     * Configures the Dokka plugin.
+     *
+     * @param action The configuration for the Dokka plugin.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     fun docs(action: Action<DokkaConfiguration>) {
         action.execute(docs)
     }
 
+    /**
+     * Configures the build constants.
+     *
+     * @param action The configuration for the build constants.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     fun buildConstants(action: Action<BuildConstantsConfiguration>) {
         action.execute(buildConstants)
     }
