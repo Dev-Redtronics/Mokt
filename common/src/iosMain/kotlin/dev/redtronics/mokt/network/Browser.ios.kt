@@ -16,7 +16,9 @@ import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
+import kotlinx.cinterop.ExperimentalForeignApi
 
+@OptIn(ExperimentalForeignApi::class)
 public actual suspend fun openInBrowser(url: Url): Unit = withContext(Dispatchers.IO) {
     open_url(url.toString())
 }

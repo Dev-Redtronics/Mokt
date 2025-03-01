@@ -120,15 +120,5 @@ kotlin {
                 api(libs.ktor.client.darwin)
             }
         }
-
-        all {
-            languageSettings {
-                optIn("kotlinx.cinterop.UnsafeNumber")
-                optIn("kotlinx.cinterop.ExperimentalForeignApi")
-                optIn("kotlin.experimental.ExperimentalNativeApi")
-                optIn("kotlin.native.runtime.NativeRuntimeApi")
-                optIn("kotlin.ExperimentalStdlibApi")
-            }
-        }
     }
 }

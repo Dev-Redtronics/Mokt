@@ -13,7 +13,9 @@ package dev.redtronics.mokt
 
 import dev.redtronics.mokt.cinterop.get_env
 import kotlinx.cinterop.toKString
+import kotlinx.cinterop.ExperimentalForeignApi
 
+@OptIn(ExperimentalForeignApi::class)
 public actual fun getEnv(key: String): String? {
     val value = get_env(key)?.toKString()
     if (value.isNullOrEmpty()) {
