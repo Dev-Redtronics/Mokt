@@ -13,8 +13,6 @@ import dev.redtronics.buildsrc.Project
 
 plugins {
     `mokt-core`
-//    `mokt-publishing`
-//    `mokt-build-constants`
 }
 
 group = Project.GROUP
@@ -24,51 +22,37 @@ repositories {
 }
 
 kotlin {
-//    js(IR) {
-//        generateTypeScriptDefinitions()
-//        nodejs()
-//        useEsModules()
-//        binaries.library()
-//    }
-//
-//    linuxX64()
-//    mingwX64()
-//
-//    macosX64()
-//    macosArm64()
-//
-//    iosArm64()
-//    iosX64()
-//    iosSimulatorArm64()
-//
-//    watchosArm32()
-//    watchosArm64()
-//    watchosX64()
-//    watchosSimulatorArm64()
-//
-//    tvosArm64()
-//    tvosX64()
-//    tvosSimulatorArm64()
-//
-//    sourceSets {
-//        commonMain {
-//            dependencies {
-////                implementation(project(":common"))
-//            }
-//        }
-//
-//        commonTest {
-//            dependencies {
-//                implementation(libs.kotest.assertions.core)
-//                implementation(libs.kotest.framework.engine)
-//                implementation(libs.kotest.property)
-//            }
-//        }
-//
-//        jvmTest {
-//            dependencies {
-//                implementation(libs.kotest.runner.junit5)
-//            }
-//        }
-//    }
+    js(IR) {
+        generateTypeScriptDefinitions()
+        nodejs()
+        useEsModules()
+        binaries.library()
+    }
+
+    linuxX64()
+    mingwX64()
+
+    macosX64()
+    macosArm64()
+
+    iosArm64()
+    iosX64()
+    iosSimulatorArm64()
+
+    watchosArm32()
+    watchosArm64()
+    watchosX64()
+    watchosSimulatorArm64()
+
+    tvosArm64()
+    tvosX64()
+    tvosSimulatorArm64()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation(project(":common"))
+            }
+        }
+    }
 }
