@@ -15,6 +15,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.time.Year
 
 plugins {
     org.jetbrains.kotlin.plugin.serialization
@@ -72,13 +73,12 @@ tasks {
 public val projectModuleName: String = project.name.replaceFirstChar { it.uppercase() }
 dokka {
     moduleName.set(projectModuleName)
+
     dokkaSourceSets.commonMain {
         includes.from("README.md")
-        jdkVersion = targetJavaVersion.majorVersion.toInt()
     }
 
     pluginsConfiguration.html {
-        footerMessage.set("Copyright © 2024 Nils Jäkel & David Ernst")
-        homepageLink = "https://mokt.redtronics.dev"
+        footerMessage.set("Copyright © ${Project.INCEPTION_YEAR}-${Year.now().value} Nils Jäkel & David Ernst")
     }
 }
