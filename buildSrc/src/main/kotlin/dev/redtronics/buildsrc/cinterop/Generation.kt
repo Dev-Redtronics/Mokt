@@ -21,13 +21,37 @@ import dev.redtronics.buildsrc.utils.os
 import javax.inject.Inject
 import java.io.File
 
+/**
+ * Generates the compiler definition files.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Task() {
+    /**
+     * The directory to store the native mokt files in.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:InputDirectory
     public abstract val nativeMoktDirectory: DirectoryProperty
 
+    /**
+     * The directory to store the cinterop files in.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:InputDirectory
     public abstract val cinteropDirectory: DirectoryProperty
 
+    /**
+     * Executes the generation of the compiler definition files.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @TaskAction
     override fun execute() {
         val nativeMoktDir = nativeMoktDirectory.get().asFile
@@ -38,6 +62,15 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
         writeDefinitionContent(defFile, includeDirectory, hFileName, nativeMoktDir)
     }
 
+    /**
+     * Validates the header files.
+     *
+     * @param includeDirectory The directory to validate the header files in.
+     * @return The name of the header file.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun validateHFiles(includeDirectory: File): String {
         val allHFiles = includeDirectory.listFiles { _, name -> name.endsWith(".h") }
         if (allHFiles.size > 1) {
@@ -46,6 +79,14 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
         return allHFiles.first().name
     }
 
+    /**
+     * Validates the definition file.
+     *
+     * @return The definition file.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun validateDefinitionFile(): File {
         val defFile = cinteropDirectory.get().asFile.resolve("cinterop.def")
         if (!defFile.exists()) {
@@ -54,6 +95,17 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
         return defFile
     }
 
+    /**
+     * Writes the content to the definition file.
+     *
+     * @param defFile The file to write the content to.
+     * @param includeDirectory The directory to include the header files from.
+     * @param hFileName The name of the header file.
+     * @param nativeMoktDir The directory to the native mokt files.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun writeDefinitionContent(defFile: File, includeDirectory: File, hFileName: String, nativeMoktDir: File) {
         when (os) {
             OsType.WINDOWS -> {

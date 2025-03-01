@@ -24,9 +24,21 @@ import javax.inject.Inject
  * @author Nils Jäkel
  * */
 public abstract class CompileRust @Inject constructor() : Executable() {
+    /**
+     * The directory to compile the rust code in.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:InputDirectory
     public abstract val nativeMoktDirectory: DirectoryProperty
 
+    /**
+     * Executes the rust compilation.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @TaskAction
     override fun execute() {
         workingDir(nativeMoktDirectory)
