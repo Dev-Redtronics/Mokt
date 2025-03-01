@@ -10,6 +10,7 @@
  */
 
 import dev.redtronics.buildsrc.MoktExtension
+import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
 import dev.redtronics.buildsrc.constants.GenerateBuildConstants
 import dev.redtronics.buildsrc.constants.buildConstantDir
 import dev.redtronics.buildsrc.utils.executeTaskBeforeCompile
@@ -18,8 +19,8 @@ plugins {
     org.jetbrains.kotlin.multiplatform
 }
 
-val moktExtension = extensions.getByType<MoktExtension>()
-val buildConstantsConfiguration = moktExtension.buildConstants
+public val moktExtension: MoktExtension = extensions.getByType<MoktExtension>()
+public val buildConstantsConfiguration: BuildConstantsConfiguration = moktExtension.buildConstants
 
 tasks {
     val generateBuildConstants by register<GenerateBuildConstants>("generateBuildConstants")

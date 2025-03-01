@@ -14,17 +14,41 @@ package dev.redtronics.buildsrc
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Exec
 
+/**
+ * Represents a process that can be executed.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 internal interface Process {
+    /**
+     * Executes the process.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     fun execute()
 }
 
-abstract class Task : DefaultTask(), Process {
+/**
+ * Represents a task that can be executed.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
+public abstract class Task : DefaultTask(), Process {
     init {
         group = Project.NAME.lowercase()
     }
 }
 
-abstract class Executable : Exec(), Process {
+/**
+ * Represents an executable like command line that can be executed.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
+public abstract class Executable : Exec(), Process {
     init {
         group = Project.NAME.lowercase()
     }

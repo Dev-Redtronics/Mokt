@@ -24,8 +24,8 @@ plugins {
     org.jetbrains.dokka
 }
 
-val jvmTargetVersion = JvmTarget.JVM_1_8
-val targetJavaVersion = JavaVersion.VERSION_1_8
+public val jvmTargetVersion: JvmTarget = JvmTarget.JVM_1_8
+public val targetJavaVersion: JavaVersion = JavaVersion.VERSION_1_8
 
 extensions.create(Project.NAME.lowercase(), MoktExtension::class)
 

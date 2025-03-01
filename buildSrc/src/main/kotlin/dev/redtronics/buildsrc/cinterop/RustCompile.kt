@@ -1,6 +1,6 @@
 /*
  * MIT License
- * Copyright 2024 Nils Jäkel  & David Ernst
+ * Copyright 2024 Nils Jäkel & David Ernst
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software”),
@@ -23,9 +23,9 @@ import javax.inject.Inject
  * @since 0.0.1
  * @author Nils Jäkel
  * */
-abstract class CompileRust @Inject constructor() : Executable() {
+public abstract class CompileRust @Inject constructor() : Executable() {
     @get:InputDirectory
-    abstract val nativeMoktDirectory: DirectoryProperty
+    public abstract val nativeMoktDirectory: DirectoryProperty
 
     @TaskAction
     override fun execute() {

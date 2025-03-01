@@ -1,6 +1,6 @@
 /*
  * MIT License
- * Copyright 2024 Nils Jäkel  & David Ernst
+ * Copyright 2024 Nils Jäkel & David Ernst
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software”),
@@ -21,12 +21,12 @@ import dev.redtronics.buildsrc.utils.os
 import javax.inject.Inject
 import java.io.File
 
-abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Task() {
+public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Task() {
     @get:InputDirectory
-    abstract val nativeMoktDirectory: DirectoryProperty
+    public abstract val nativeMoktDirectory: DirectoryProperty
 
     @get:InputDirectory
-    abstract val cinteropDirectory: DirectoryProperty
+    public abstract val cinteropDirectory: DirectoryProperty
 
     @TaskAction
     override fun execute() {

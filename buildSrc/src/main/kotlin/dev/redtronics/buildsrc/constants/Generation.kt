@@ -1,6 +1,6 @@
 /*
  * MIT License
- * Copyright 2024 Nils Jäkel  & David Ernst
+ * Copyright 2024 Nils Jäkel & David Ernst
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software”),
@@ -40,7 +40,7 @@ internal fun BuildConstantsConfiguration.buildConstantDir(project: Project) = pr
  * @since 0.0.1
  * @author Nils Jäkel
  * */
-abstract class GenerateBuildConstants : Task() {
+public abstract class GenerateBuildConstants : Task() {
     /**
      * The properties to generate the build constants from.
      *
@@ -48,7 +48,7 @@ abstract class GenerateBuildConstants : Task() {
      * @author Nils Jäkel
      * */
     @get:Input
-    abstract val properties: MapProperty<String, String>
+    public abstract val properties: MapProperty<String, String>
 
     /**
      * The directory to store the build constants in.
@@ -57,7 +57,7 @@ abstract class GenerateBuildConstants : Task() {
      * @author Nils Jäkel
      * */
     @get:InputDirectory
-    abstract val buildConstantDirectory: DirectoryProperty
+    public abstract val buildConstantDirectory: DirectoryProperty
 
     /**
      * The group of the project.
@@ -66,7 +66,7 @@ abstract class GenerateBuildConstants : Task() {
      * @author Nils Jäkel
      * */
     @get:Input
-    abstract val projectGroup: Property<String>
+    public abstract val projectGroup: Property<String>
 
     /**
      * Whether the generated file should be internal or public.
@@ -75,7 +75,7 @@ abstract class GenerateBuildConstants : Task() {
      * @author Nils Jäkel
      * */
      @get:Input
-     abstract val onlyInternal: Property<Boolean>
+     public abstract val onlyInternal: Property<Boolean>
 
     /**
      * Executes the task to generate the build constants.

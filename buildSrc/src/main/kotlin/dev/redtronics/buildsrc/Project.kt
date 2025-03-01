@@ -22,12 +22,12 @@ import org.gradle.api.tasks.Nested
  * @since 0.0.1
  * @author Nils Jäkel
  * */
-object Project {
-    const val NAME = "Mokt"
-    const val DESCRIPTION = "A Kotlin Multiplatform SDK for interaction with the Minecraft World."
-    const val GROUP = "dev.redtronics.mokt"
-    const val URL = "https://mokt.redtronics.dev"
-    const val GITLAB_URL = "https://code.redtronics.dev"
+public object Project {
+    public const val NAME: String = "Mokt"
+    public const val DESCRIPTION: String = "A Kotlin Multiplatform SDK for interaction with the Minecraft World."
+    public const val GROUP: String = "dev.redtronics.mokt"
+    public const val URL: String = "https://mokt.redtronics.dev"
+    public const val GITLAB_URL: String = "https://code.redtronics.dev"
 }
 
 /**
@@ -36,7 +36,7 @@ object Project {
  * @since 0.0.1
  * @author Nils Jäkel
  * */
-interface MoktExtension {
+public interface MoktExtension {
     /**
      * The configuration for the Dokka plugin.
      *
@@ -44,7 +44,7 @@ interface MoktExtension {
      * @author Nils Jäkel
      * */
     @get:Nested
-    val docs: DokkaConfiguration
+    public val docs: DokkaConfiguration
 
     /**
      * The configuration for the build constants.
@@ -53,7 +53,7 @@ interface MoktExtension {
      * @author Nils Jäkel
      * */
     @get:Nested
-    val buildConstants: BuildConstantsConfiguration
+    public val buildConstants: BuildConstantsConfiguration
 
     /**
      * Configures the Dokka plugin.
@@ -63,7 +63,7 @@ interface MoktExtension {
      * @since 0.0.1
      * @author Nils Jäkel
      * */
-    fun docs(action: Action<DokkaConfiguration>) {
+    public fun docs(action: Action<DokkaConfiguration>) {
         action.execute(docs)
     }
 
@@ -75,7 +75,7 @@ interface MoktExtension {
      * @since 0.0.1
      * @author Nils Jäkel
      * */
-    fun buildConstants(action: Action<BuildConstantsConfiguration>) {
+    public fun buildConstants(action: Action<BuildConstantsConfiguration>) {
         action.execute(buildConstants)
     }
 }
