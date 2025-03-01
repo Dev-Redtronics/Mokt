@@ -20,6 +20,7 @@ The following platforms are supported:
 | common         | ✅   | ✅  | ✅     | ✅       | ✅       | ✅     | ✅   | ✅    | ✅       |
 | core           | ✅   | ✅  | ✅     | ✅       | ✅       | ✅     | ✅   | ✅    | ✅       |
 | authentication | ✅   | ❌  | ✅     | ❌       | ❌       | ✅     | ✅   | ✅    | ✅       |
+| launcher       | ✅   | ✅  | ✅     | ✅       | ✅       | ✅     | ✅   | ✅    | ✅       |
 
 ## Getting Started
 
