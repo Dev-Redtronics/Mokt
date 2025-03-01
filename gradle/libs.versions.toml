@@ -1,6 +1,5 @@
 [versions]
 kotlin = "2.1.10"
-idea-ext = "1.1.10"
 dokka = "2.0.0"
 ktor = "3.1.0"
 kotest = "6.0.0.M2"
@@ -41,7 +40,6 @@ mordant = { module = "com.github.ajalt.mordant:mordant", version.ref = "mordant"
 
 # actual plugins, but needed as dependencies in buildSrc
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-idea-ext-gradle-plugin = { module = "gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext", version.ref = "idea-ext" }
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 serialization-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotest-gradle-plugin = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
@@ -50,7 +48,6 @@ atomicfu-gradle-plugin = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugi
 [bundles]
 build-src = [
     "kotlin-gradle-plugin",
-    "idea-ext-gradle-plugin",
     "dokka-gradle-plugin",
     "serialization-gradle-plugin",
     "kotest-gradle-plugin",
