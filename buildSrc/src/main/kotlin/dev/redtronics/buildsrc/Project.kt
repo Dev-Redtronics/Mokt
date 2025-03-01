@@ -27,6 +27,7 @@ public object Project {
     public const val GROUP: String = "dev.redtronics.mokt"
     public const val URL: String = "https://mokt.redtronics.dev"
     public const val GITLAB_URL: String = "https://code.redtronics.dev"
+    public const val INCEPTION_YEAR: Int = 2024
 }
 
 /**
