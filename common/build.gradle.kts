@@ -79,6 +79,7 @@ kotlin {
 
         jsMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.js)
                 implementation(npm("open", "10.1.0"))
             }
@@ -86,37 +87,42 @@ kotlin {
 
         linuxMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.cio)
             }
         }
 
         mingwMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.winhttp)
             }
         }
 
         iosMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.darwin)
             }
         }
 
         macosMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.darwin)
             }
         }
 
         tvosMain {
             dependencies {
+                // Ktor client
                 api(libs.ktor.client.darwin)
             }
         }
 
         watchosMain {
             dependencies {
-                // Ktor Client
+                // Ktor client
                 api(libs.ktor.client.darwin)
             }
         }
