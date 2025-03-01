@@ -17,6 +17,14 @@ import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
+/**
+ * Executes a task before the compilation of Kotlin and Java sources.
+ *
+ * @param task The task to execute before the compilation.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 internal fun Project.executeTaskBeforeCompile(task: Task) {
     tasks.withType<KotlinCompilationTask<*>> {
         dependsOn(task)
@@ -27,6 +35,14 @@ internal fun Project.executeTaskBeforeCompile(task: Task) {
     }
 }
 
+/**
+ * Executes multiple tasks before the compilation of Kotlin and Java sources.
+ *
+ * @param tasks The tasks to execute before the compilation.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 internal fun Project.executeTasksBeforeCompile(vararg tasks: Task) {
     tasks.forEach { task ->
         executeTaskBeforeCompile(task)
