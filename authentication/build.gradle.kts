@@ -45,8 +45,11 @@ kotlin {
         commonMain {
             dependencies {
                 api(project(":common"))
+
+                // Mordant
                 api(libs.mordant)
 
+                // Ktor server
                 implementation(libs.ktor.server.core)
                 implementation(libs.ktor.server.cio)
                 implementation(libs.ktor.server.content.negotiation)
