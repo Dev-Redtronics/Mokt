@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.1.10"
 dokka = "2.0.0"
-ktor = "3.1.0"
+ktor = "3.1.1"
 kotest = "6.0.0.M2"
 serialization = "1.8.0"
 datetime = "0.6.2"
@@ -10,9 +10,13 @@ logback = "1.5.16"
 atomicfu = "0.27.0"
 
 [libraries]
+# Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+# DateTime
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 
+# Ktor Client
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
@@ -21,21 +25,25 @@ ktor-client-winhttp = { module = "io.ktor:ktor-client-winhttp", version.ref = "k
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 
+# Ktor Server
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
 ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor-server-html = { module = "io.ktor:ktor-server-html-builder", version.ref = "ktor" }
 
+# Ktor Common
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
+# Testing
 kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+# Logback
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
+# Mordant
 mordant = { module = "com.github.ajalt.mordant:mordant", version.ref = "mordant" }
 
 # actual plugins, but needed as dependencies in buildSrc
