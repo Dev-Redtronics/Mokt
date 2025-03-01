@@ -1,4 +1,4 @@
-package dev.redtronics.buildsrc.docs/*
+/*
  * MIT License
  * Copyright 2024 Nils Jäkel & David Ernst
  *
@@ -9,18 +9,32 @@ package dev.redtronics.buildsrc.docs/*
  * and/or sell copies of the Software.
  */
 
+package dev.redtronics.buildsrc.docs
+
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
+import javax.inject.Inject
 
 /**
  * Contains the configuration for the Dokka plugin.
  *
- * @property name The name override for the documentation.
- * @property description The description for the documentation.
- *
  * @since 0.0.1
  * @author Nils Jäkel
  */
-interface DokkaConfiguration {
-    val name: Property<String>
-    val description: Property<String>
+abstract class DokkaConfiguration @Inject constructor(objects: ObjectFactory) {
+    /**
+     * The name of the project.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
+    val name: Property<String> = objects.property(String::class.java).apply { set("Mokt") }
+
+    /**
+     * The description of the project.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
+    val description: Property<String> = objects.property(String::class.java).apply { set("A Mokt project") }
 }
