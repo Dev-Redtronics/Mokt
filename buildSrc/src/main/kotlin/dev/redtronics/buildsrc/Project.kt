@@ -12,7 +12,6 @@
 package dev.redtronics.buildsrc
 
 import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
-import dev.redtronics.buildsrc.docs.DokkaConfiguration
 import org.gradle.api.Action
 import org.gradle.api.tasks.Nested
 
@@ -38,15 +37,6 @@ public object Project {
  * */
 public interface MoktExtension {
     /**
-     * The configuration for the Dokka plugin.
-     *
-     * @since 0.0.1
-     * @author Nils Jäkel
-     * */
-    @get:Nested
-    public val docs: DokkaConfiguration
-
-    /**
      * The configuration for the build constants.
      *
      * @since 0.0.1
@@ -54,18 +44,6 @@ public interface MoktExtension {
      * */
     @get:Nested
     public val buildConstants: BuildConstantsConfiguration
-
-    /**
-     * Configures the Dokka plugin.
-     *
-     * @param action The configuration for the Dokka plugin.
-     *
-     * @since 0.0.1
-     * @author Nils Jäkel
-     * */
-    public fun docs(action: Action<DokkaConfiguration>) {
-        action.execute(docs)
-    }
 
     /**
      * Configures the build constants.
