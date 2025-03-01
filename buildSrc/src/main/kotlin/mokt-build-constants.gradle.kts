@@ -22,16 +22,20 @@ val moktExtension = extensions.getByType<MoktExtension>()
 val buildConstantsConfiguration = moktExtension.buildConstants
 
 tasks {
-    val generateBuildConstants by register<GenerateBuildConstants>("generateBuildConstants") {
+    val generateBuildConstants by register<GenerateBuildConstants>("generateBuildConstants")
 
+    afterEvaluate {
         val buildConstantsDir = buildConstantsConfiguration.buildConstantDir(project)
         if (!buildConstantsDir.exists()) {
             buildConstantsDir.mkdirs()
         }
 
-        properties = buildConstantsConfiguration.properties
-        buildConstantDirectory = buildConstantsDir
-        projectGroup = project.group.toString()
+        generateBuildConstants.apply {
+            properties = buildConstantsConfiguration.properties
+            buildConstantDirectory = buildConstantsDir
+            onlyInternal = buildConstantsConfiguration.onlyInternal
+            projectGroup = project.group.toString()
+        }
     }
     project.executeTaskBeforeCompile(generateBuildConstants)
 }

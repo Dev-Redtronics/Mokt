@@ -21,21 +21,68 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
+/**
+ * Resolves the build constant directory.
+ *
+ * @param project The project to resolve the build constant directory for.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 internal fun BuildConstantsConfiguration.buildConstantDir(project: Project) = project.layout.buildDirectory
     .dir("generated/templates")
     .get()
     .asFile
 
+/**
+ * Generates the build constants.
+ *
+ * @since 0.0.1
+ * @author Nils Jäkel
+ * */
 abstract class GenerateBuildConstants : Task() {
+    /**
+     * The properties to generate the build constants from.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:Input
     abstract val properties: MapProperty<String, String>
 
+    /**
+     * The directory to store the build constants in.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:InputDirectory
     abstract val buildConstantDirectory: DirectoryProperty
 
+    /**
+     * The group of the project.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @get:Input
     abstract val projectGroup: Property<String>
 
+    /**
+     * Whether the generated file should be internal or public.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
+     @get:Input
+     abstract val onlyInternal: Property<Boolean>
+
+    /**
+     * Executes the task to generate the build constants.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     @TaskAction
     override fun execute() {
         val content = extractContent()
@@ -44,15 +91,30 @@ abstract class GenerateBuildConstants : Task() {
         writeContentToBuildConstantsFile(buildConstantsFile, content)
     }
 
+    /**
+     * Extracts the content from the properties.
+     *
+     * @return The constants in form of [String].
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun extractContent(): String {
         return properties.get().entries.joinToString("\n") {
             "    const val ${it.key} = \"${it.value}\""
         }
     }
 
+    /**
+     * Creates the build constants file.
+     *
+     * @return The created build constants file.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun createBuildConstantsFile(): File {
         val buildConstantDir = buildConstantDirectory.get().asFile
-        buildConstantDir.mkdirs()
 
         val buildConstantsFile = buildConstantDir.resolve("BuildConstants.kt")
         if (!buildConstantsFile.exists()) {
@@ -61,15 +123,24 @@ abstract class GenerateBuildConstants : Task() {
         return buildConstantsFile
     }
 
+    /**
+     * Writes the content to the build constants file.
+     *
+     * @param buildConstantsFile The file to write the content to.
+     * @param content The content to write to the file.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
     private fun writeContentToBuildConstantsFile(buildConstantsFile: File, content: String) {
-        val group = projectGroup.get()
+        val isInternal = onlyInternal.get()
 
         buildConstantsFile.writeText(
             """
                 // This file is generated automatically. Do not edit or modify!
-                package ${group}.build
+                package ${projectGroup.get()}.build
 
-                internal object BuildConstants {
+                ${if (isInternal) "internal" else "public"} object BuildConstants {
                 $content
                 }
             """.trimIndent()
