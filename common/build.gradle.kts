@@ -67,6 +67,15 @@ kotlin {
             }
         }
 
+        commonTest {
+            dependencies {
+                // Kotest
+                implementation(libs.kotest.property)
+                implementation(libs.kotest.assertions.core)
+                implementation(libs.kotest.framework.engine)
+            }
+        }
+
         jvmMain {
             dependencies {
                 // Ktor Client
@@ -74,6 +83,13 @@ kotlin {
 
                 // Logging
                 api(libs.logback)
+            }
+        }
+
+        jvmTest {
+            dependencies {
+                // Kotest
+                implementation(libs.kotest.runner.junit5)
             }
         }
 

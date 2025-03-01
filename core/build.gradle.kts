@@ -54,5 +54,21 @@ kotlin {
                 api(project(":common"))
             }
         }
+
+        commonTest {
+            dependencies {
+                // Kotest
+                implementation(libs.kotest.property)
+                implementation(libs.kotest.assertions.core)
+                implementation(libs.kotest.framework.engine)
+            }
+        }
+
+        jvmTest {
+            dependencies {
+                // Kotest
+                implementation(libs.kotest.runner.junit5)
+            }
+        }
     }
 }
