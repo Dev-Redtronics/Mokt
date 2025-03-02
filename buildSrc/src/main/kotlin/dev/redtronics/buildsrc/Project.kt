@@ -23,10 +23,10 @@ import org.gradle.api.tasks.Nested
  * */
 public object Project {
     public const val NAME: String = "Mokt"
-    public const val DESCRIPTION: String = "A Kotlin Multiplatform SDK for interaction with the Minecraft World."
+    public const val DESCRIPTION: String = "A Kotlin Multiplatform SDK for integrating with the Mojang and Minecraft APIs."
     public const val GROUP: String = "dev.redtronics.mokt"
     public const val URL: String = "https://mokt.redtronics.dev"
-    public const val GITLAB_URL: String = "https://code.redtronics.dev"
+    public const val GITHUB_URL: String = "https://github.com/Dev-Redtronics/Mokt"
     public const val INCEPTION_YEAR: Int = 2024
 }
 
