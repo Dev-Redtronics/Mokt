@@ -5,8 +5,6 @@ A Kotlin Multiplatform SDK for interaction with the Minecraft World.
 
 ![Static Badge](https://img.shields.io/badge/kotlin-redtronics?style=flat&logo=kotlin&labelColor=white&color=purple&link=https%3A%2F%2Fkotlinlang.org%2F)
 ![Static Badge](https://img.shields.io/badge/MIT-redtronics?style=flat&logoColor=black&label=license&labelColor=white&color=purple&link=https%3A%2F%2Fkotlinlang.org%2F)
-![Static Badge](https://code.redtronics.dev/nils.jaekel/mokt/badges/master/pipeline.svg)
-![Static Badge](https://code.redtronics.dev/nils.jaekel/mokt/-/badges/release.svg)
 
 ## Supported Platforms
 
