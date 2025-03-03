@@ -13,6 +13,7 @@ import dev.redtronics.buildsrc.Project
 
 plugins {
     `mokt-core`
+    `mokt-docs`
     `mokt-build-constants`
 }
 

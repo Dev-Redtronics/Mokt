@@ -15,14 +15,12 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.time.Year
 
 plugins {
     org.jetbrains.kotlin.plugin.serialization
     org.jetbrains.kotlin.multiplatform
     org.jetbrains.kotlinx.atomicfu
     io.kotest.multiplatform
-    org.jetbrains.dokka
 }
 
 public val jvmTargetVersion: JvmTarget = JvmTarget.JVM_1_8
@@ -67,18 +65,5 @@ tasks {
             events = setOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
             exceptionFormat = TestExceptionFormat.FULL
         }
-    }
-}
-
-public val projectModuleName: String = project.name.replaceFirstChar { it.uppercase() }
-dokka {
-    moduleName.set(projectModuleName)
-
-    dokkaSourceSets.commonMain {
-        includes.from("README.md")
-    }
-
-    pluginsConfiguration.html {
-        footerMessage.set("Copyright © ${Project.INCEPTION_YEAR}-${Year.now().value} Nils Jäkel & David Ernst")
     }
 }

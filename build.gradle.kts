@@ -9,11 +9,9 @@
  * and/or sell copies of the Software.
  */
 
-import dev.redtronics.buildsrc.Project
-import java.time.Year
 
 plugins {
-    org.jetbrains.dokka
+    `mokt-docs`
 }
 
 repositories {
@@ -25,17 +23,4 @@ dependencies {
     dokka(project(":core"))
     dokka(project(":authentication"))
     dokka(project(":launcher"))
-}
-
-val projectModuleName: String = project.name.replaceFirstChar { it.uppercase() }
-dokka {
-    moduleName.set(projectModuleName)
-
-    dokkaPublications.html {
-        includes.from("README.md")
-    }
-
-    pluginsConfiguration.html {
-        footerMessage.set("Copyright © ${Project.INCEPTION_YEAR}-${Year.now().value} Nils Jäkel & David Ernst")
-    }
 }

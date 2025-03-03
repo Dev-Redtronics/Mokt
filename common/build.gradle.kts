@@ -14,6 +14,7 @@ import dev.redtronics.buildsrc.cinterop.applyNativeConfiguration
 
 plugins {
     `mokt-core`
+    `mokt-docs`
     `mokt-build-constants`
     `mokt-cinterop-generation`
 }
