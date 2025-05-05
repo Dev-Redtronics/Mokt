@@ -1,0 +1,33 @@
+name: dokka
+
+on:
+  workflow_call:
+
+jobs:
+  dokka:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          java-package: 'jdk'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Generate documentation
+        run: ./gradlew dokkaGenerate
+
+      - name: Deploy docs to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/html
+          branch: gh-pages
+          git-config-name: GitHub Actions
+          git-config-email: actions@github.com
+          commit-message: Update docs
