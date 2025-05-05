@@ -1,0 +1,41 @@
+name: Mokt
+
+services:
+  docs:
+    container_name: mokt-docs
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.5"
+          memory: 1024M
+        limits:
+          cpus: "1"
+          memory: 2048M
+    read_only: true
+    privileged: false
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    volumes:
+      - data:/data
+      - config:/config
+    restart: no
+    networks:
+      - mokt
+networks:
+  mokt:
+    driver: bridge
+volumes:
+  data:
+    driver: local
+  config:
+    driver: local
