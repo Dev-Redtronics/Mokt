@@ -15,24 +15,31 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Exec
 
 /**
- * Represents a process that can be executed.
+ * Represents a process that can be executed within the build system.
+ * This interface defines the contract for all executable processes in the project,
+ * providing a common abstraction for different types of tasks and commands.
  *
  * @since 0.0.1
- * */
+ */
 internal interface Process {
     /**
-     * Executes the process.
+     * Executes the process implementation.
+     * This method should contain the logic to perform the specific task or command
+     * that the implementing class is designed to execute.
      *
      * @since 0.0.1
-     * */
+     */
     fun execute()
 }
 
 /**
- * Represents a task that can be executed.
+ * Base class for all custom Gradle tasks in the project.
+ * This abstract class extends Gradle's DefaultTask and implements the Process interface,
+ * providing a foundation for creating custom build tasks with consistent behavior.
+ * All tasks created from this class will be automatically assigned to the project's group.
  *
  * @since 0.0.1
- * */
+ */
 public abstract class Task : DefaultTask(), Process {
     init {
         group = Project.NAME.lowercase()
@@ -40,11 +47,14 @@ public abstract class Task : DefaultTask(), Process {
 }
 
 /**
- * Represents an executable like command line that can be executed.
+ * Base class for tasks that execute external commands or processes.
+ * This abstract class extends Gradle's Exec task and implements the Process interface,
+ * providing a foundation for creating tasks that run external commands with consistent behavior.
+ * All executable tasks created from this class will be automatically assigned to the project's group.
  *
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 public abstract class Executable : Exec(), Process {
     init {
         group = Project.NAME.lowercase()

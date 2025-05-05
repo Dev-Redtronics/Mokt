@@ -24,45 +24,52 @@ import javax.inject.Inject
 import java.io.File
 
 /**
- * Generates the compiler definition files.
+ * Task that generates the compiler definition files for C interoperability.
+ * This task creates the necessary definition files that allow Kotlin code to interact with native C libraries.
  *
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Task() {
     /**
-     * The directory to store the native mokt files in.
+     * The directory containing the native mokt implementation files.
+     * This directory is used as the source for header files and compiled libraries.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @get:InputDirectory
     public abstract val nativeMoktDirectory: DirectoryProperty
 
     /**
-     * The directory to store the cinterop files in.
+     * The directory where generated C interoperability files will be stored.
+     * This directory will contain the output files produced by this task.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @get:InputDirectory
     public abstract val cinteropDirectory: DirectoryProperty
 
     /**
-     * The file to store the cinterop definition in.
+     * The file where the C interoperability definition will be written.
+     * This file contains configuration for the Kotlin/Native compiler to properly
+     * interface with the C libraries.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @get:InputFile
     public abstract val cinteropDefFile: RegularFileProperty
 
     /**
-     * Executes the generation of the compiler definition files.
+     * Executes the task to generate compiler definition files.
+     * This method validates the header files in the include directory and
+     * writes the appropriate definition content to the output file.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @TaskAction
     override fun execute() {
         val nativeMoktDir = nativeMoktDirectory.get().asFile
@@ -72,14 +79,17 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
     }
 
     /**
-     * Validates the header files.
+     * Validates that exactly one header file exists in the include directory.
+     * This method ensures that there is one and only one .h file in the specified directory,
+     * throwing an exception if this condition is not met.
      *
-     * @param includeDirectory The directory to validate the header files in.
-     * @return The name of the header file.
+     * @param includeDirectory The directory containing header files to validate
+     * @return The name of the single header file found
+     * @throws IllegalStateException If more than one header file is found
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     private fun validateHFiles(includeDirectory: File): String {
         val allHFiles = includeDirectory.listFiles { _, name -> name.endsWith(".h") }
         if (allHFiles.size > 1) {
@@ -89,15 +99,17 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
     }
 
     /**
-     * Writes the content to the definition file.
+     * Writes the C interoperability definition content to the specified file.
+     * This method generates platform-specific definition content based on the current operating system,
+     * including appropriate paths to headers and libraries.
      *
-     * @param includeDirectory The directory to include the header files from.
-     * @param hFileName The name of the header file.
-     * @param nativeMoktDir The directory to the native mokt files.
+     * @param includeDirectory The directory containing the header files to reference
+     * @param hFileName The name of the header file to include in the definition
+     * @param nativeMoktDir The root directory containing the native mokt implementation
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     private fun writeDefinitionContent(includeDirectory: File, hFileName: String, nativeMoktDir: File) {
         val defFile = cinteropDefFile.get().asFile
         when (os) {

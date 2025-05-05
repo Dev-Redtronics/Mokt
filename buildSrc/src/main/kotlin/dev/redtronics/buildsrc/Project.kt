@@ -16,11 +16,14 @@ import org.gradle.api.Action
 import org.gradle.api.tasks.Nested
 
 /**
- * Project settings for Mokt.
+ * Central configuration object containing project-wide settings and metadata for Mokt.
+ * This object defines constants used throughout the build system to maintain
+ * consistent project information across all build files and generated artifacts.
+ * It includes details about the project, CI, licensing, issue tracking, and source control.
  *
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 public object Project {
     // Project information
     public const val NAME: String = "Mokt"
@@ -48,28 +51,36 @@ public object Project {
 }
 
 /**
- * The Mokt extension.
+ * Gradle extension interface for configuring Mokt-specific build settings.
+ * This interface provides a type-safe way to configure various aspects of the Mokt build
+ * through the Gradle DSL. It exposes configuration options that can be customized
+ * in build scripts to control the build process.
  *
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 public interface MoktExtension {
     /**
-     * The configuration for the build constants.
+     * Configuration for build-time constants generation.
+     * This property provides access to settings that control how build constants
+     * are generated and what values they contain. These constants can be used
+     * to inject build-specific information into the compiled code.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @get:Nested
     public val buildConstants: BuildConstantsConfiguration
 
     /**
-     * Configures the build constants.
+     * Configures the build constants using a configuration action.
+     * This method provides a DSL-friendly way to configure build constants
+     * in Gradle build scripts using lambda expressions or action objects.
      *
-     * @param action The configuration for the build constants.
+     * @param action The configuration action to apply to the build constants
      *
      * @since 0.0.1
-     * */
+     */
     public fun buildConstants(action: Action<BuildConstantsConfiguration>) {
         action.execute(buildConstants)
     }

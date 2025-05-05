@@ -18,27 +18,34 @@ import org.gradle.api.tasks.TaskAction
 import javax.inject.Inject
 
 /**
- * Compiles the rust release.
+ * Task that compiles the Rust code in release mode.
+ * This task executes the Rust compiler (cargo) to build the native implementation
+ * that will be used by the Kotlin code through C interoperability.
  *
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 public abstract class CompileRust @Inject constructor() : Executable() {
     /**
-     * The directory to compile the rust code in.
+     * The directory containing the Rust project to be compiled.
+     * This property specifies the location of the Rust source code and Cargo.toml file
+     * that will be used as the working directory for the compilation process.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @get:InputDirectory
     public abstract val nativeMoktDirectory: DirectoryProperty
 
     /**
-     * Executes the rust compilation.
+     * Executes the Rust compilation process in release mode.
+     * This method sets the working directory to the Rust project location and
+     * runs the 'cargo build --release' command to compile the Rust code with optimizations.
+     * The resulting binary will be placed in the target/release directory.
      *
      * @since 0.0.1
      * @author Nils Jäkel
-     * */
+     */
     @TaskAction
     override fun execute() {
         workingDir(nativeMoktDirectory)

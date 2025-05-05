@@ -12,11 +12,15 @@
 package dev.redtronics.buildsrc.utils
 
 /**
- * Enum class to determine the operating system.
+ * Enum class representing different operating system types.
+ * This enumeration provides a type-safe way to identify and work with different
+ * operating systems in the build process, allowing for platform-specific behavior
+ * where needed.
  *
+ * @property os The string identifier for the operating system
  * @since 0.0.1
  * @author Nils Jäkel
- * */
+ */
 internal enum class OsType(val os: String) {
     WINDOWS("windows"),
     LINUX("linux"),
@@ -31,14 +35,20 @@ internal enum class OsType(val os: String) {
 }
 
 /**
- * The operating system of the current machine.
- * It resolves the operating system as [Lazy] property.
+ * Lazily determined operating system of the current machine.
+ * This property detects the current operating system by examining system properties
+ * and returns the appropriate [OsType]. The detection is performed only once when
+ * the property is first accessed, thanks to the lazy initialization.
+ *
+ * The detection logic checks for common substrings in the "os.name" system property
+ * to identify Windows, Linux, macOS, or unknown operating systems.
  *
  * @since 0.0.1
  * @author Nils Jäkel
  *
- * @see Lazy
- * */
+ * @see OsType
+ * @see lazy
+ */
 internal val os: OsType by lazy {
     val osName = System.getProperty("os.name").lowercase()
     when {
