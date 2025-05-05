@@ -17,8 +17,6 @@ plugins {
     `mokt-build-constants`
 }
 
-group = Project.GROUP
-
 repositories {
     mavenCentral()
 }
