@@ -1,7 +1,7 @@
 [package]
 name = "mokt-native"
 description = "Native Rust bindings for Mokt."
-authors = ["Nils Jäkel <nils.jaekel@redtronics.dev>", "David Ernst <david.ernst@redtronics.dev>"]
+authors = ["Nils Jäkel <nils.jaekel@redtronics.dev>", "David Ernst <david.ernst@davils.net>"]
 license = "MIT"
 readme = "../README.md"
 version = "0.0.0"
@@ -11,7 +11,7 @@ edition = "2021"
 crate-type = ["staticlib"]
 
 [build-dependencies]
-cbindgen = "0.27.0"
+cbindgen = "0.28.0"
 
 [dependencies]
 libc = "0.2.162"
