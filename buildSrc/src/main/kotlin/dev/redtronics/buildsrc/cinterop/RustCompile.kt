@@ -22,8 +22,7 @@ import javax.inject.Inject
  * This task executes the Rust compiler (cargo) to build the native implementation
  * that will be used by the Kotlin code through C interoperability.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 public abstract class CompileRust @Inject constructor() : Executable() {
     /**
@@ -31,8 +30,7 @@ public abstract class CompileRust @Inject constructor() : Executable() {
      * This property specifies the location of the Rust source code and Cargo.toml file
      * that will be used as the working directory for the compilation process.
      *
-     * @since 0.0.1
-     * @author Nils Jäkel
+     * @since 0.1.0
      */
     @get:InputDirectory
     public abstract val nativeMoktDirectory: DirectoryProperty
@@ -43,8 +41,7 @@ public abstract class CompileRust @Inject constructor() : Executable() {
      * runs the 'cargo build --release' command to compile the Rust code with optimizations.
      * The resulting binary will be placed in the target/release directory.
      *
-     * @since 0.0.1
-     * @author Nils Jäkel
+     * @since 0.1.0
      */
     @TaskAction
     override fun execute() {

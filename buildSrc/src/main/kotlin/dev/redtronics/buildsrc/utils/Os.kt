@@ -18,8 +18,7 @@ package dev.redtronics.buildsrc.utils
  * where needed.
  *
  * @property os The string identifier for the operating system
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 internal enum class OsType(val os: String) {
     WINDOWS("windows"),
@@ -43,8 +42,7 @@ internal enum class OsType(val os: String) {
  * The detection logic checks for common substrings in the "os.name" system property
  * to identify Windows, Linux, macOS, or unknown operating systems.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  *
  * @see OsType
  * @see lazy

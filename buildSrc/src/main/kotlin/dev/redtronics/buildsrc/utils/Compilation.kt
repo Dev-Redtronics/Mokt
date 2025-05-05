@@ -26,8 +26,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
  * @param task The task that should be executed before compilation
  * @receiver The Gradle project to configure
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 internal fun Project.executeTaskBeforeCompile(task: Task) {
     tasks.withType<KotlinCompilationTask<*>> {
@@ -48,8 +47,7 @@ internal fun Project.executeTaskBeforeCompile(task: Task) {
  * @param tasks Variable number of tasks that should be executed before compilation
  * @receiver The Gradle project to configure
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  * @see executeTaskBeforeCompile
  */
 internal fun Project.executeTasksBeforeCompile(vararg tasks: Task) {
