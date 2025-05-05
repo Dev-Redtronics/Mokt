@@ -22,6 +22,12 @@ tasks {
             cinteropDir.mkdirs()
         }
 
+        val defFile = cinteropDir.resolve("cinterop.def")
+        if (!defFile.exists()) {
+            defFile.createNewFile()
+        }
+
+        cinteropDefFile = defFile
         cinteropDirectory = cinteropDir
         nativeMoktDirectory = nativeMoktDir
     }
