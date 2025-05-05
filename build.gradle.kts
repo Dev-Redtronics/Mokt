@@ -9,7 +9,6 @@
  * and/or sell copies of the Software.
  */
 
-
 plugins {
     `mokt-docs`
 }
@@ -23,4 +22,10 @@ dependencies {
     dokka(project(":core"))
     dokka(project(":authentication"))
     dokka(project(":launcher"))
+}
+
+dokka {
+    dokkaPublications.html {
+        outputDirectory = project.projectDir.resolve("docs/html")
+    }
 }
