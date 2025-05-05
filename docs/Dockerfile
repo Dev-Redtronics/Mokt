@@ -4,7 +4,7 @@ FROM caddy:alpine
 RUN addgroup -S caddy && adduser -S -G caddy caddy
 
 # Create necessary directories for Caddy (config and data)
-RUN mkdir -p /config/caddy /data/caddy && \
+RUN mkdir -p /config/caddy /data/caddy/locks && \
     chown -R caddy:caddy /config /data
 
 # Copy static site content and config with proper ownership
