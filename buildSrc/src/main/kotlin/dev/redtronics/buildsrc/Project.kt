@@ -22,12 +22,29 @@ import org.gradle.api.tasks.Nested
  * @author Nils Jäkel
  * */
 public object Project {
+    // Project information
     public const val NAME: String = "Mokt"
+    public const val GROUP: String = "dev.redtronics"
     public const val DESCRIPTION: String = "A Kotlin Multiplatform SDK for integrating with the Mojang and Minecraft APIs."
-    public const val GROUP: String = "dev.redtronics.mokt"
-    public const val URL: String = "https://mokt.redtronics.dev"
-    public const val GITHUB_URL: String = "https://github.com/Dev-Redtronics/Mokt"
     public const val INCEPTION_YEAR: Int = 2024
+    public const val URL: String = "https://github.com/Dev-Redtronics/Mokt"
+
+    // CI Management
+    public const val CI_NAME: String = "Github Actions"
+    public const val CI_URL: String = "https://github.com/Dev-Redtronics/Mokt/actions"
+
+    // License
+    public const val LICENSE_NAME: String = "MIT"
+    public const val LICENSE_URL: String = "https://opensource.org/licenses/MIT"
+    public const val LICENSE_DISTRIBUTION: String = "repo"
+
+    // Issue Management
+    public const val ISSUE_TRACKER: String = "GitHub Issues"
+    public const val ISSUE_TRACKER_URL: String = "https://github.com/Dev-Redtronics/Mokt/issues"
+
+    // SCM
+    public const val SCM_NAME: String = "GitHub"
+    public const val SCM_URL: String = "https://github.com/Dev-Redtronics/Mokt.git"
 }
 
 /**
@@ -52,7 +69,6 @@ public interface MoktExtension {
      * @param action The configuration for the build constants.
      *
      * @since 0.0.1
-     * @author Nils Jäkel
      * */
     public fun buildConstants(action: Action<BuildConstantsConfiguration>) {
         action.execute(buildConstants)

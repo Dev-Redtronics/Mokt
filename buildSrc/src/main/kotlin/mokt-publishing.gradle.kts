@@ -34,7 +34,7 @@ publishing {
                 developers {
                     developer {
                         id = "redtronics"
-                        name = "Nils Jäkel"
+                        name = "Nils Jaekel"
                         timezone = "Europe/Berlin"
                         email = "nils.jaekel@redtronics.dev"
                     }
@@ -55,11 +55,18 @@ publishing {
                 }
 
                 ciManagement {
-                    system = "Github"
+                    system = Project.CI_NAME
+                    url = Project.CI_URL
                 }
 
                 issueManagement {
-                    system = "Github"
+                    system = Project.ISSUE_TRACKER
+                    url = Project.ISSUE_TRACKER_URL
+                }
+
+                scm {
+                    name = Project.SCM_NAME
+                    url = Project.SCM_URL
                 }
             }
         }
