@@ -15,9 +15,11 @@ import dev.redtronics.buildsrc.utils.OsType
 import dev.redtronics.buildsrc.Project
 import dev.redtronics.buildsrc.Task
 import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
 import dev.redtronics.buildsrc.utils.os
+import org.gradle.api.tasks.InputFile
 import javax.inject.Inject
 import java.io.File
 
@@ -47,6 +49,15 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
     public abstract val cinteropDirectory: DirectoryProperty
 
     /**
+     * The file to store the cinterop definition in.
+     *
+     * @since 0.0.1
+     * @author Nils Jäkel
+     * */
+    @get:InputFile
+    public abstract val cinteropDefFile: RegularFileProperty
+
+    /**
      * Executes the generation of the compiler definition files.
      *
      * @since 0.0.1
@@ -57,9 +68,7 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
         val nativeMoktDir = nativeMoktDirectory.get().asFile
         val includeDirectory = nativeMoktDir.resolve("include")
         val hFileName = validateHFiles(includeDirectory)
-
-        val defFile = validateDefinitionFile()
-        writeDefinitionContent(defFile, includeDirectory, hFileName, nativeMoktDir)
+        writeDefinitionContent(includeDirectory, hFileName, nativeMoktDir)
     }
 
     /**
@@ -80,25 +89,8 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
     }
 
     /**
-     * Validates the definition file.
-     *
-     * @return The definition file.
-     *
-     * @since 0.0.1
-     * @author Nils Jäkel
-     * */
-    private fun validateDefinitionFile(): File {
-        val defFile = cinteropDirectory.get().asFile.resolve("cinterop.def")
-        if (!defFile.exists()) {
-            defFile.createNewFile()
-        }
-        return defFile
-    }
-
-    /**
      * Writes the content to the definition file.
      *
-     * @param defFile The file to write the content to.
      * @param includeDirectory The directory to include the header files from.
      * @param hFileName The name of the header file.
      * @param nativeMoktDir The directory to the native mokt files.
@@ -106,7 +98,8 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
      * @since 0.0.1
      * @author Nils Jäkel
      * */
-    private fun writeDefinitionContent(defFile: File, includeDirectory: File, hFileName: String, nativeMoktDir: File) {
+    private fun writeDefinitionContent(includeDirectory: File, hFileName: String, nativeMoktDir: File) {
+        val defFile = cinteropDefFile.get().asFile
         when (os) {
             OsType.WINDOWS -> {
                 defFile.writeText(
