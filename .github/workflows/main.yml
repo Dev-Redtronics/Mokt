@@ -15,3 +15,5 @@ jobs:
   pages:
     uses: ./.github/workflows/dokka.yml
     if: github.ref == 'refs/heads/main'
+    needs:
+      - build
