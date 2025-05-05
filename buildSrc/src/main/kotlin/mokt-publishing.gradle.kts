@@ -22,7 +22,7 @@ publishing {
                 name = Project.NAME
                 description = Project.DESCRIPTION
                 url = Project.URL
-                inceptionYear = "2024"
+                inceptionYear = Project.INCEPTION_YEAR.toString()
 
                 licenses {
                     license {
@@ -61,12 +61,6 @@ publishing {
                 issueManagement {
                     system = "Github"
                 }
-
-//                scm {
-//                    connection = "${Project.GITLAB_URL}/nils.jaekel/mokt.git"
-//                    developerConnection = "${Project.GITLAB_URL}/nils.jaekel/mokt.git"
-//                    url = "${Project.GITLAB_URL}/nils.jaekel/mokt"
-//                }
             }
         }
     }
