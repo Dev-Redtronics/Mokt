@@ -41,7 +41,7 @@ public fun KotlinNativeTargetWithHostTests.applyNativeConfiguration() {
         cinterops {
             create(Project.NAME.lowercase()) {
                 defFile(path)
-                packageName("${Project.GROUP}.cinterop")
+                packageName("${Project.GROUP}.${Project.NAME.lowercase()}.cinterop")
             }
         }
     }
@@ -60,7 +60,7 @@ public fun KotlinNativeTarget.applyNativeConfiguration() {
         cinterops {
             create(Project.NAME.lowercase()) {
                 defFile(path)
-                packageName("${Project.GROUP}.cinterop")
+                packageName("${Project.GROUP}.${Project.NAME.lowercase()}.cinterop")
             }
         }
     }
