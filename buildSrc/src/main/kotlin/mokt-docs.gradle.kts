@@ -25,6 +25,6 @@ dokka {
     }
 
     pluginsConfiguration.html {
-        footerMessage.set("Copyright © ${Year.now().value} Nils Jäkel & David Ernst")
+        footerMessage.set("Copyright © ${Year.now().value} Nils Jaekel & David Ernst")
     }
 }
