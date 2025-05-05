@@ -1,4 +1,4 @@
 :8080 {
-    root * /usr/share/caddy
-    file_server
+	root * /usr/share/caddy
+	file_server
 }
