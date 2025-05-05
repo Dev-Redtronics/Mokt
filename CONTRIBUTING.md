@@ -14,6 +14,7 @@ Thank you for your interest in contributing to Mokt! This document provides guid
   - [Pull Requests](#pull-requests)
 - [Coding Standards](#coding-standards)
   - [Kotlin Style Guide](#kotlin-style-guide)
+  - [Rust Style Guide](#rust-style-guide)
   - [Documentation](#documentation)
   - [Testing](#testing)
 - [Issue Reporting](#issue-reporting)
@@ -151,16 +152,23 @@ When creating a pull request:
 
 ### Documentation
 
-- Add KDoc comments for all public classes, methods, and properties
+- Add KDoc comments for all public Kotlin classes, methods, and properties
+- Add Rustdoc comments for all public Rust functions and types
 - Update the README.md if you add or change functionality
 - Update the CHANGELOG.md for all notable changes
+- Document C interop functions with both Rustdoc and KDoc comments
 
 ### Testing
 
 - Write tests for all new functionality
 - Ensure all tests pass before submitting a pull request
-- Use Kotest for writing tests
-- Aim for high test coverage, especially for core functionality
+- For Kotlin code:
+  - Use Kotest for writing tests
+  - Aim for high test coverage, especially for core functionality
+- For Rust code:
+  - Write unit tests using Rust's built-in testing framework
+  - Run tests with `cargo test`
+  - Test C interop functions thoroughly to ensure they handle edge cases properly
 
 ## Issue Reporting
 
