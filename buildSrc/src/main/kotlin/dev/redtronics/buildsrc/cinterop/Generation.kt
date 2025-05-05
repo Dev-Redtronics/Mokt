@@ -54,7 +54,6 @@ public abstract class GenerateCompilerDefinitionFiles @Inject constructor() : Ta
      * interface with the C libraries.
      *
      * @since 0.1.0
-     * @author Nils Jäkel & David Ernst
      */
     @get:InputFile
     public abstract val cinteropDefFile: RegularFileProperty
