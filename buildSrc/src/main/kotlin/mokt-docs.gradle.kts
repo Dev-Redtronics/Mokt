@@ -9,7 +9,6 @@
  * and/or sell copies of the Software.
  */
 
-import dev.redtronics.buildsrc.Project
 import java.time.Year
 
 plugins {
