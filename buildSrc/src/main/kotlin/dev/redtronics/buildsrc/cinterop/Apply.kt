@@ -1,14 +1,3 @@
-/*
- * MIT License
- * Copyright 2024 Nils Jäkel & David Ernst
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the "Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software.
- */
-
 package dev.redtronics.buildsrc.cinterop
 
 import dev.redtronics.buildsrc.Project
@@ -20,20 +9,19 @@ import java.nio.file.Path
 /**
  * Resolves the path to the cinterop definition file.
  *
- * @param project The project to resolve the path for.
- * @return The [Path] to the cinterop definition file.
+ * @param project The Gradle project instance
+ * @return The resolved [Path] to the cinterop.def file
  *
- * @since 0.0.1
- * @author Nils Jäkel
- * */
+ * @since 0.1.0
+ */
 private fun resolveCinteropDefPath(project: GradleProject): Path = project.rootProject.file("cinterop/cinterop.def").toPath()
 
 /**
  * Applies the cinterop configuration to all [KotlinNativeTargetWithHostTests] targets.
+ * Configures the compilation and package settings for native interop.
  *
- * @since 0.0.1
- * @author Nils Jäkel
- * */
+ * @since 0.1.0
+ */
 public fun KotlinNativeTargetWithHostTests.applyNativeConfiguration() {
     val path = resolveCinteropDefPath(project)
 
@@ -49,10 +37,10 @@ public fun KotlinNativeTargetWithHostTests.applyNativeConfiguration() {
 
 /**
  * Applies the cinterop configuration to all [KotlinNativeTarget] targets.
+ * Configures the compilation and package settings for native interop.
  *
- * @since 0.0.1
- * @author Nils Jäkel
- * */
+ * @since 0.1.0
+ */
 public fun KotlinNativeTarget.applyNativeConfiguration() {
     val path = resolveCinteropDefPath(project)
 
