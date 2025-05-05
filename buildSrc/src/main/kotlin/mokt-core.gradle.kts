@@ -23,6 +23,8 @@ plugins {
     io.kotest.multiplatform
 }
 
+group = "${Project.GROUP}.${Project.NAME.lowercase()}"
+
 public val jvmTargetVersion: JvmTarget = JvmTarget.JVM_1_8
 public val targetJavaVersion: JavaVersion = JavaVersion.VERSION_1_8
 
