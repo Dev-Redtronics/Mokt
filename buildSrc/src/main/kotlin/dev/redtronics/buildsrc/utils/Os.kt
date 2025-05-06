@@ -1,14 +1,3 @@
-/*
- * MIT License
- * Copyright 2024 Nils Jäkel & David Ernst
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the "Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software.
- */
-
 package dev.redtronics.buildsrc.utils
 
 /**
@@ -18,8 +7,7 @@ package dev.redtronics.buildsrc.utils
  * where needed.
  *
  * @property os The string identifier for the operating system
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 internal enum class OsType(val os: String) {
     WINDOWS("windows"),
@@ -43,8 +31,7 @@ internal enum class OsType(val os: String) {
  * The detection logic checks for common substrings in the "os.name" system property
  * to identify Windows, Linux, macOS, or unknown operating systems.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  *
  * @see OsType
  * @see lazy

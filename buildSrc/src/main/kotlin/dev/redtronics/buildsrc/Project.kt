@@ -1,14 +1,3 @@
-/*
- * MIT License
- * Copyright 2024 Nils Jäkel  & David Ernst
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the "Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software.
- */
-
 package dev.redtronics.buildsrc
 
 import dev.redtronics.buildsrc.constants.BuildConstantsConfiguration
@@ -21,8 +10,7 @@ import org.gradle.api.tasks.Nested
  * consistent project information across all build files and generated artifacts.
  * It includes details about the project, CI, licensing, issue tracking, and source control.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 public object Project {
     // Project information
@@ -56,8 +44,7 @@ public object Project {
  * through the Gradle DSL. It exposes configuration options that can be customized
  * in build scripts to control the build process.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 public interface MoktExtension {
     /**
@@ -66,8 +53,7 @@ public interface MoktExtension {
      * are generated and what values they contain. These constants can be used
      * to inject build-specific information into the compiled code.
      *
-     * @since 0.0.1
-     * @author Nils Jäkel
+     * @since 0.1.0
      */
     @get:Nested
     public val buildConstants: BuildConstantsConfiguration
@@ -78,8 +64,7 @@ public interface MoktExtension {
      * in Gradle build scripts using lambda expressions or action objects.
      *
      * @param action The configuration action to apply to the build constants
-     *
-     * @since 0.0.1
+     * @since 0.1.0
      */
     public fun buildConstants(action: Action<BuildConstantsConfiguration>) {
         action.execute(buildConstants)

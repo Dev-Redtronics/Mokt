@@ -1,7 +1,7 @@
 [package]
 name = "mokt-native"
-description = "Native Rust bindings for Mokt."
-authors = ["Nils Jäkel <nils.jaekel@redtronics.dev>", "David Ernst <david.ernst@davils.net>"]
+description = "Native bindings for Mokt."
+authors = ["Nils Jaekel <nils.jaekel@redtronics.dev>", "David Ernst <david.ernst@davils.net>"]
 license = "MIT"
 readme = "../README.md"
 version = "0.0.0"

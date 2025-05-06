@@ -1,14 +1,3 @@
-/*
- * MIT License
- * Copyright 2024 Nils Jäkel & David Ernst
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the "Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software.
- */
-
 package dev.redtronics.buildsrc.utils
 
 import org.gradle.api.Project
@@ -26,8 +15,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
  * @param task The task that should be executed before compilation
  * @receiver The Gradle project to configure
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 internal fun Project.executeTaskBeforeCompile(task: Task) {
     tasks.withType<KotlinCompilationTask<*>> {
@@ -48,8 +36,7 @@ internal fun Project.executeTaskBeforeCompile(task: Task) {
  * @param tasks Variable number of tasks that should be executed before compilation
  * @receiver The Gradle project to configure
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  * @see executeTaskBeforeCompile
  */
 internal fun Project.executeTasksBeforeCompile(vararg tasks: Task) {

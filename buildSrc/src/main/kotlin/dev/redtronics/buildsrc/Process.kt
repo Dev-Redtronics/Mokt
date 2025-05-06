@@ -1,14 +1,3 @@
-/*
- * MIT License
- * Copyright 2024 Nils Jäkel  & David Ernst
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the "Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software.
- */
-
 package dev.redtronics.buildsrc
 
 import org.gradle.api.DefaultTask
@@ -19,7 +8,7 @@ import org.gradle.api.tasks.Exec
  * This interface defines the contract for all executable processes in the project,
  * providing a common abstraction for different types of tasks and commands.
  *
- * @since 0.0.1
+ * @since 0.1.0
  */
 internal interface Process {
     /**
@@ -27,7 +16,7 @@ internal interface Process {
      * This method should contain the logic to perform the specific task or command
      * that the implementing class is designed to execute.
      *
-     * @since 0.0.1
+     * @since 0.1.0
      */
     fun execute()
 }
@@ -38,7 +27,7 @@ internal interface Process {
  * providing a foundation for creating custom build tasks with consistent behavior.
  * All tasks created from this class will be automatically assigned to the project's group.
  *
- * @since 0.0.1
+ * @since 0.1.0
  */
 public abstract class Task : DefaultTask(), Process {
     init {
@@ -52,8 +41,7 @@ public abstract class Task : DefaultTask(), Process {
  * providing a foundation for creating tasks that run external commands with consistent behavior.
  * All executable tasks created from this class will be automatically assigned to the project's group.
  *
- * @since 0.0.1
- * @author Nils Jäkel
+ * @since 0.1.0
  */
 public abstract class Executable : Exec(), Process {
     init {
