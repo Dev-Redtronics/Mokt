@@ -45,7 +45,7 @@ public abstract class CompileRust @Inject constructor() : Executable() {
                 val paths = pathVars.split(":")
                 val cargoPath = paths.find { it.contains(".cargo${File.separatorChar}bin") } ?: ""
 
-                commandLine("${cargoPath}${File.separatorChar}cargo.exe", "build", "--release")
+                commandLine("${cargoPath}${File.separatorChar}cargo", "build", "--release")
             }
             else -> {
                 commandLine("cargo", "build", "--release")
