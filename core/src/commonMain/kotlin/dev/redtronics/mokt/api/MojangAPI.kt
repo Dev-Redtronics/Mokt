@@ -109,6 +109,44 @@ public open class PublicMojangApi internal constructor(
         return Result.failure(err)
     }
 
+    /**
+     * Retrieves the skin and cape textures for a Minecraft player.
+     *
+     * @param uuid The UUID of the player
+     * @param signed Whether to include the signature verification (default: false)
+     * @return A Result containing the TextureData if successful, or an error if not
+     */
+    public suspend fun getSkin(uuid: String, signed: Boolean = false): Result<TextureData> {
+        // Use the Mojang API to get the profile with properties
+        val profileUrl = "https://sessionserver.mojang.com/session/minecraft/profile/$uuid"
+        val queryParams = if (!signed) "?unsigned=true" else ""
+
+        val res = httpClient.get(profileUrl + queryParams)
+
+        if (res.status.isSuccess()) {
+            val profile = json.decodeFromString<Profile>(res.body<String>())
+
+            // Find the textures property
+            val textureProperty = profile.properties.find { it.name == "textures" }
+
+            if (textureProperty != null) {
+                // Decode the texture data
+                val textureData = textureProperty.decodeTextureData(json)
+
+                if (textureData != null) {
+                    return Result.success(textureData)
+                }
+
+                return Result.failure(Exception("Failed to decode texture data"))
+            }
+
+            return Result.failure(Exception("No texture property found"))
+        }
+
+        val err = json.decodeFromString<MojangApiError>(res.body<String>())
+        return Result.failure(err)
+    }
+
 
     /**
      * Retrieves the UUIDs associated with the given Minecraft usernames by querying the Mojang API.
