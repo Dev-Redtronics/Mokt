@@ -22,6 +22,7 @@ dependencies {
     dokka(project(":core"))
     dokka(project(":authentication"))
     dokka(project(":launcher"))
+    dokka(project(":inspect"))
 }
 
 dokka {
