@@ -10,7 +10,10 @@ on:
 
 jobs:
   build:
-    ./.github/workflows/build.yml
+    uses: ./.github/workflows/build.yml
+
   pages:
     uses: ./.github/workflows/dokka.yml
     if: github.ref == 'refs/heads/main'
+    needs:
+      - build

@@ -1,9 +1,12 @@
 package dev.redtronics.buildsrc.cinterop
 
 import dev.redtronics.buildsrc.Executable
+import dev.redtronics.buildsrc.utils.OsType
+import dev.redtronics.buildsrc.utils.os
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
+import java.io.File
 import javax.inject.Inject
 
 /**
@@ -35,6 +38,18 @@ public abstract class CompileRust @Inject constructor() : Executable() {
     @TaskAction
     override fun execute() {
         workingDir(nativeMoktDirectory)
-        commandLine("cargo", "build", "--release")
+
+        when(os) {
+            OsType.MACOS -> {
+                val pathVars = System.getenv("PATH")
+                val paths = pathVars.split(":")
+                val cargoPath = paths.find { it.contains(".cargo${File.separatorChar}bin") } ?: ""
+
+                commandLine("${cargoPath}${File.separatorChar}cargo.exe", "build", "--release")
+            }
+            else -> {
+                commandLine("cargo", "build", "--release")
+            }
+        }
     }
 }

@@ -14,8 +14,8 @@ plugins {
 
 group = "${Project.GROUP}.${Project.NAME.lowercase()}"
 
-public val jvmTargetVersion: JvmTarget = JvmTarget.JVM_1_8
-public val targetJavaVersion: JavaVersion = JavaVersion.VERSION_1_8
+public val jvmTargetVersion: JvmTarget = JvmTarget.JVM_21
+public val targetJavaVersion: JavaVersion = JavaVersion.VERSION_21
 
 extensions.create(Project.NAME.lowercase(), MoktExtension::class)
 
