@@ -15,3 +15,4 @@ cbindgen = "0.28.0"
 
 [dependencies]
 libc = "0.2.162"
+base64 = "0.22.1"
