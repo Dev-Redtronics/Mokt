@@ -11,49 +11,19 @@
 
 package dev.redtronics.mokt
 
+import dev.redtronics.mokt.api.PublicMojangApi
 import dev.redtronics.mokt.network.client
 import dev.redtronics.mokt.network.defaultJson
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.request
+import io.ktor.http.isSuccess
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-
-public data class AuthContext(
-    public var mojangToken: String? = null,
-    public var username: String? = null
-)
-
-public class MojangApiContext {
-    public fun auth(builder: AuthContext.() -> Unit) {
-
-    }
-
-
-}
-
-
-public interface MojangApi {
-    public val httpClient: HttpClient
-}
-
-public open class PublicMojangApi internal constructor(
-    override val httpClient: HttpClient = client
-): MojangApi {
-    public suspend fun isUsernameAvailable(username: String): Boolean {
-        val body = httpClient.get("https://api.mojang.com/users/profiles/minecraft/$username").body<String>()
-        when (body.lowercase()) {
-            "AVAILABLE" -> return true
-            "TAKEN" -> return false
-            else -> throw Exception("Unknown response: $body")
-        }
-    }
-}
-
-public class PrivateMojangApi internal constructor(
-    override val httpClient: HttpClient = client,
-): MojangApi, PublicMojangApi() {
-
-}
+import kotlin.uuid.Uuid
 
 
 
@@ -64,11 +34,11 @@ public class Mojang {
 
     public suspend fun authenticate(tocken: String, block: () -> Unit): Nothing = TODO()
 
-    public suspend fun public(block: () -> Unit) {
-
+    public suspend fun public(block: suspend PublicMojangApi.() -> Unit) {
+        block(PublicMojangApi(httpClient))
     }
 }
 
-public fun mojang(builder: Mojang.() -> Unit) {
-
+public suspend fun mojang(builder: suspend Mojang.() -> Unit) {
+    builder(Mojang())
 }
