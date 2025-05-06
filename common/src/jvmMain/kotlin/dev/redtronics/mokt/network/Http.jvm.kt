@@ -14,7 +14,9 @@ package dev.redtronics.mokt.network
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.*
+import io.ktor.serialization.kotlinx.json.json
 
 public actual val client: HttpClient = HttpClient(CIO) {
     install(Logging) {
@@ -30,5 +32,9 @@ public actual val client: HttpClient = HttpClient(CIO) {
     install(HttpRequestRetry) {
         maxRetries = 3
         retryOnServerErrors(3)
+    }
+
+    install(ContentNegotiation) {
+        this.json(defaultJson)
     }
 }
